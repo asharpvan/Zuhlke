@@ -12,6 +12,7 @@ import XCTest
 class ZuhlkeTests: XCTestCase {
     
     let repository: Repository = Repository()
+    let viewModel: MapScreenViewModel = MapScreenViewModel()
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -86,13 +87,30 @@ class ZuhlkeTests: XCTestCase {
                 XCTAssertNil(response, "Response not found nil")
                 
             case.failure(let error):
-                XCTAssertNotNil(error, "erro received: \(error.localizedDescription)")
+                XCTAssertNotNil(error, "error received: \(error.localizedDescription)")
                 expect.fulfill()
             }
         }
-        
         waitForExpectations(timeout: 20, handler: nil)
-
+    }
+    
+    func testProcess() {
+        
+        let errorString1 = self.viewModel.processErrorReceived(error: .badURL)
+        XCTAssertEqual(errorString1, "Bad URL. Please check the URL passed")
+        
+        let errorString2 = self.viewModel.processErrorReceived(error: .badResponseError)
+        XCTAssertEqual(errorString2, "Response received from server is not in the correct format")
+        
+        let errorString3 = self.viewModel.processErrorReceived(error: .parsingError)
+        XCTAssertEqual(errorString3, "Couldnt Parse Data")
+        
+        let errorString4 = self.viewModel.processErrorReceived(error: .imageConversionError)
+        XCTAssertEqual(errorString4, "Something went wrong while downloading the image")
+        
+        let errorString5 = self.viewModel.processErrorReceived(error: .accessDenied)
+        XCTAssertEqual(errorString5, "Access Denied")
+        
         
     }
 
