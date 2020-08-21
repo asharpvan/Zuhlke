@@ -17,7 +17,6 @@ class LocationDataModel: NSObject, Codable {
     enum CodingKeys : String, CodingKey {
         case longitude = "longitude"
         case latitude = "latitude"
-        
     }
     
     init(withLongitude longitude: Double, latitude: Double) {

@@ -11,14 +11,16 @@ import MapKit
 
 class CustomPin: NSObject, MKAnnotation {
     
+    //MARK: - Variables
     var title: String?
     var coordinate: CLLocationCoordinate2D
-    var item: CameraDataModel
+    var cameraInfo: CameraDataModel
 
-    init(withItem item: CameraDataModel) {
-        self.item = item
-        self.title = "Camera Id : " + item.fetchCameraId()
-        if let coordinates = item.fetchCameraLocation() {
+    //MARK: - init methods
+    init(withCameraInfo cameraInfo: CameraDataModel) {
+        self.cameraInfo = cameraInfo
+        self.title = "Camera Id : " + cameraInfo.fetchCameraId()
+        if let coordinates = cameraInfo.fetchCameraLocation() {
             self.coordinate = coordinates
         } else {
             self.coordinate = CLLocationCoordinate2DMake(0, 0)

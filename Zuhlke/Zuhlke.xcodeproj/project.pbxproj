@@ -74,6 +74,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B04858524F0172B00AD0D0C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8B83E16D24EFD8BD001186AB /* MapScreen.swift */,
+				8B83E17D24EFDC0F001186AB /* CustomPin.swift */,
+				8B83E17F24EFDD1C001186AB /* CustomCalloutView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8B04858624F0173200AD0D0C /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				8B83E16F24EFD98D001186AB /* MapScreenViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		8B04858724F0173800AD0D0C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8B83E17324EFDA0F001186AB /* ResponseDataModel.swift */,
+				8B83E17724EFDA91001186AB /* ItemsDataModel.swift */,
+				8B83E17924EFDAD6001186AB /* CameraDataModel.swift */,
+				8B83E17B24EFDB1A001186AB /* LocationDataModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8B04858824F0173D00AD0D0C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8B83E17524EFDA68001186AB /* PSBindable.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8B04858924F017CC00AD0D0C /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				8B83E17124EFD9AA001186AB /* Repository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		8B83E13F24EFD7CA001186AB = {
 			isa = PBXGroup;
 			children = (
@@ -97,16 +142,11 @@
 			children = (
 				8B83E14B24EFD7CA001186AB /* AppDelegate.swift */,
 				8B83E14D24EFD7CA001186AB /* SceneDelegate.swift */,
-				8B83E16D24EFD8BD001186AB /* MapScreen.swift */,
-				8B83E16F24EFD98D001186AB /* MapScreenViewModel.swift */,
-				8B83E17F24EFDD1C001186AB /* CustomCalloutView.swift */,
-				8B83E17124EFD9AA001186AB /* Repository.swift */,
-				8B83E17324EFDA0F001186AB /* ResponseDataModel.swift */,
-				8B83E17724EFDA91001186AB /* ItemsDataModel.swift */,
-				8B83E17924EFDAD6001186AB /* CameraDataModel.swift */,
-				8B83E17B24EFDB1A001186AB /* LocationDataModel.swift */,
-				8B83E17D24EFDC0F001186AB /* CustomPin.swift */,
-				8B83E17524EFDA68001186AB /* PSBindable.swift */,
+				8B04858524F0172B00AD0D0C /* View */,
+				8B04858624F0173200AD0D0C /* View Model */,
+				8B04858724F0173800AD0D0C /* Model */,
+				8B04858924F017CC00AD0D0C /* Repository */,
+				8B04858824F0173D00AD0D0C /* Supporting Files */,
 				8B83E15424EFD7D5001186AB /* Assets.xcassets */,
 				8B83E15624EFD7D5001186AB /* LaunchScreen.storyboard */,
 				8B83E15924EFD7D5001186AB /* Info.plist */,

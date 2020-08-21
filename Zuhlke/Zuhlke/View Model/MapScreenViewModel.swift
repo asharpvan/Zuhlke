@@ -8,40 +8,38 @@
 
 import UIKit
 
-protocol ViewModelProtocol {
+protocol MapScreenViewModelProtocol {
     
     var repository: Repository! { get set }
     var annotations: PSBindable<Array<CustomPin>> { get set }
-    var hasError: PSBindable<NetworkError?> { get set }
-    
     var selectedCustomPin: CustomCalloutView? { get set }
-    
+    var hasError: PSBindable<NetworkError?> { get set }
+
     func fetchSingaporeTrafficCamera()
+    func userDidSelectPin(view: CustomCalloutView)
+    func stopDowloadingSpinner()
+    func processErrorReceived(error: NetworkError) -> String
 }
 
-class MapScreenViewModel: NSObject, ViewModelProtocol {
-    var hasError: PSBindable<NetworkError?> = PSBindable<NetworkError?>(nil)
-    
-
+class MapScreenViewModel: NSObject, MapScreenViewModelProtocol {
     var selectedCustomPin: CustomCalloutView? = nil
     var repository: Repository! = Repository()
-    
     var annotations: PSBindable<Array<CustomPin>> = PSBindable<Array<CustomPin>>(Array<CustomPin>())
-    
-    
-    
-    //MARK: - Life Cycle related Methods
+    var hasError: PSBindable<NetworkError?> = PSBindable<NetworkError?>(nil)
+
+    //MARK: - init methods
     override init() {
         super.init()
     }
     
+    //MARK: - public methods
     func fetchSingaporeTrafficCamera() {
         self.repository.callSingaporeTrafficCameraAPI { (result) in
             switch result {
             case .success(let clockInDetails):
                 var arrayOfCards = Array<CustomPin>()
                 for item in clockInDetails.extractAllCameraInfo() {
-                    let pin = CustomPin(withItem: item)
+                    let pin = CustomPin(withCameraInfo: item)
                     arrayOfCards.append(pin)
                 }
                 self.annotations.value.append(contentsOf: arrayOfCards)
@@ -53,11 +51,12 @@ class MapScreenViewModel: NSObject, ViewModelProtocol {
     }
     
     func userDidSelectPin(view: CustomCalloutView) {
-
+        
         self.selectedCustomPin = view
         
-        guard let view = self.selectedCustomPin , let annotation = view.annotation as? CustomPin, let url = annotation.item.fetchCameraImageURL() else { return }
-        view.setSpinnerVisibilty(toState: true)
+        guard let view = self.selectedCustomPin , let annotation = view.annotation as? CustomPin, let url = annotation.cameraInfo.fetchCameraImageURL() else { return }
+        
+        view.updateSpinner(toState: true)
         
         self.repository.fetchCameraImage(url: url) { (result) in
             switch result {
@@ -93,5 +92,4 @@ class MapScreenViewModel: NSObject, ViewModelProtocol {
             return "Something went wrong while downloading the image"
         }
     }
-    
 }

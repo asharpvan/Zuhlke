@@ -25,9 +25,9 @@ protocol RepositoryProtocol {
     func fetchCameraImage(url: URL, completionHandler: @escaping (Result<UIImage, NetworkError>) -> Void)
 }
 
-
 class Repository: NSObject, RepositoryProtocol, URLSessionDelegate {
     
+    //MARK: - Variable
     var imageCache = NSCache<NSString, UIImage>()
     
     private lazy var onloadURL : URLComponents = {
@@ -39,15 +39,16 @@ class Repository: NSObject, RepositoryProtocol, URLSessionDelegate {
         components.queryItems = [dateQueryItem]
         return components
     }()
-    
-    
-    func getTimeStamp() -> String {
+
+    //MARK: - Private Methods
+    private func getTimeStamp() -> String {
         let date = Date()
-        print(date)
-        return "2020-08-01T09:09:09"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return formatter.string(from: date)
     }
-    
-    
+
+    //MARK: - Public API Methods
     func callSingaporeTrafficCameraAPI(completionHandler: @escaping (Result<ResponseDataModel, NetworkError>) ->Void) {
         
         guard let url = self.onloadURL.url else {
@@ -104,7 +105,7 @@ class Repository: NSObject, RepositoryProtocol, URLSessionDelegate {
             completionHandler(.success(cachedImage))
         } else {
             //If NOT pre-cached
-            let request = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.returnCacheDataElseLoad, timeoutInterval: 10)
+            let request = URLRequest(url: url, cachePolicy: URLRequest.CachePolicy.returnCacheDataElseLoad, timeoutInterval: kTimeoutInterval)
             let session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
             let task = session.dataTask(with: request) { data, response, error in
                 
@@ -142,9 +143,8 @@ class Repository: NSObject, RepositoryProtocol, URLSessionDelegate {
             task.resume()
         }
     }
-    
-    
-    //MARK: - Status Bar Setup Related Methods
+
+    //MARK: - Session delegate methods
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         completionHandler(.useCredential, URLCredential(trust: challenge.protectionSpace.serverTrust!))
     }

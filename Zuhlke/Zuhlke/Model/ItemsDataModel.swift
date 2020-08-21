@@ -28,26 +28,3 @@ class ItemsDataModel: NSObject, Codable {
         return cameras
     }
 }
-
-class API_Info: NSObject, Codable {
-    
-    let status: String?
-    //    let cameras: String?
-    
-    enum CodingKeys : String, CodingKey {
-        case status = "status"
-        
-    }
-    
-    init(withWithStatus status: String) {
-        self.status = status
-    }
-    
-    //MARK: - Public Object Methods
-    public func fetchStatusName() -> String {
-        guard let status = self.status else {
-            return "timestamp Not Provided"
-        }
-        return status
-    }
-}

@@ -11,11 +11,13 @@ import MapKit
 
 class MapScreen: UIViewController {
     
+    //MARK: - Constant
     struct MapScreenConstant {
-        static let successAlertTitle = "Alert"
+        static let alertTitle = "Alert"
         static let alertOKButtonTitle = "Ok"
     }
     
+    //MARK: - Variables
     var viewModel : MapScreenViewModel!
     
     private lazy var mapView : MKMapView = {
@@ -26,6 +28,7 @@ class MapScreen: UIViewController {
         return mapView
     }()
     
+    //MARK: - init methods
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -36,6 +39,7 @@ class MapScreen: UIViewController {
         setupUI()
     }
     
+    //MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -73,10 +77,11 @@ class MapScreen: UIViewController {
         viewModel.hasError.bindAndFireEvent { [weak self] (error) in
             guard let self = self, let error = error else { return }
             let subtitle = self.viewModel.processErrorReceived(error: error)
-            self.showAlert(withTitle: MapScreenConstant.successAlertTitle, andSubtitle: subtitle)
+            self.showAlert(withTitle: MapScreenConstant.alertTitle, andSubtitle: subtitle)
         }
     }
 
+    //MARK: - Private Methods
     private func showAlert(withTitle title: String, andSubtitle message: String, handler: ((_ isOK : Bool) -> Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: MapScreenConstant.alertOKButtonTitle, style: UIAlertAction.Style.default, handler: { (userAction) in
@@ -88,6 +93,7 @@ class MapScreen: UIViewController {
     }
 }
 
+//MARK: - MKMapViewDelegate Methods
 extension MapScreen: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {

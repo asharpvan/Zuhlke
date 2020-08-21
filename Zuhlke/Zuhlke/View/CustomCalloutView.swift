@@ -11,6 +11,7 @@ import MapKit
 
 class CustomCalloutView: MKPinAnnotationView {
     
+    //MARK: - variables
     private lazy var snapshotView : UIImageView = {
         let layer = UIImageView()
         layer.translatesAutoresizingMaskIntoConstraints = false
@@ -21,8 +22,8 @@ class CustomCalloutView: MKPinAnnotationView {
     }()
     
     private lazy var spinner : UIActivityIndicatorView = {
-        var spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
-        spinner.color = .green
+        var spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        spinner.color = UIColor.white
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.hidesWhenStopped = true
         return spinner
@@ -34,6 +35,7 @@ class CustomCalloutView: MKPinAnnotationView {
         }
     }
     
+    //MARK: - init methods
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -44,17 +46,8 @@ class CustomCalloutView: MKPinAnnotationView {
         setupDetailedView()
     }
     
-    func updateImage(image: UIImage?) {
-        self.setSpinnerVisibilty(toState: false)
-        self.snapshotView.image = image
-    }
-    
-    func stopUpdateImage() {
-        self.setSpinnerVisibilty(toState: false)
-        self.snapshotView.image = nil
-    }
-    
-    func setupDetailedView() {
+    //MARK: - private methods
+    private func setupDetailedView() {
         
         let rect = CGRect(origin: .zero, size: CGSize(width: 300, height: 200))
         
@@ -68,12 +61,27 @@ class CustomCalloutView: MKPinAnnotationView {
         ])
     }
     
-    func setSpinnerVisibilty(toState state: Bool) {
+    private func setSpinnerVisibilty(toState state: Bool) {
         switch state {
         case true:
             self.spinner.startAnimating()
         default:
             self.spinner.stopAnimating()
         }
+    }
+    
+    //MARK: - public methods
+    func updateSpinner(toState state: Bool) {
+        self.setSpinnerVisibilty(toState: state)
+    }
+    
+    func updateImage(image: UIImage?) {
+        self.setSpinnerVisibilty(toState: false)
+        self.snapshotView.image = image
+    }
+    
+    func stopUpdateImage() {
+        self.setSpinnerVisibilty(toState: false)
+        self.snapshotView.image = nil
     }
 }
