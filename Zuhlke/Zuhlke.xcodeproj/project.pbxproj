@@ -13,6 +13,15 @@
 		8B83E15824EFD7D5001186AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B83E15624EFD7D5001186AB /* LaunchScreen.storyboard */; };
 		8B83E16324EFD7D6001186AB /* ZuhlkeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83E16224EFD7D6001186AB /* ZuhlkeTests.swift */; };
 		8B83E16E24EFD8BD001186AB /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83E16D24EFD8BD001186AB /* MapScreen.swift */; };
+		8B83E17024EFD98D001186AB /* MapScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83E16F24EFD98D001186AB /* MapScreenViewModel.swift */; };
+		8B83E17224EFD9AA001186AB /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83E17124EFD9AA001186AB /* Repository.swift */; };
+		8B83E17424EFDA0F001186AB /* ResponseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83E17324EFDA0F001186AB /* ResponseDataModel.swift */; };
+		8B83E17624EFDA68001186AB /* PSBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83E17524EFDA68001186AB /* PSBindable.swift */; };
+		8B83E17824EFDA91001186AB /* ItemsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83E17724EFDA91001186AB /* ItemsDataModel.swift */; };
+		8B83E17A24EFDAD6001186AB /* CameraDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83E17924EFDAD6001186AB /* CameraDataModel.swift */; };
+		8B83E17C24EFDB1A001186AB /* LocationDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83E17B24EFDB1A001186AB /* LocationDataModel.swift */; };
+		8B83E17E24EFDC0F001186AB /* CustomPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83E17D24EFDC0F001186AB /* CustomPin.swift */; };
+		8B83E18024EFDD1C001186AB /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83E17F24EFDD1C001186AB /* CustomCalloutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +45,15 @@
 		8B83E16224EFD7D6001186AB /* ZuhlkeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZuhlkeTests.swift; sourceTree = "<group>"; };
 		8B83E16424EFD7D6001186AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B83E16D24EFD8BD001186AB /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
+		8B83E16F24EFD98D001186AB /* MapScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenViewModel.swift; sourceTree = "<group>"; };
+		8B83E17124EFD9AA001186AB /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		8B83E17324EFDA0F001186AB /* ResponseDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDataModel.swift; sourceTree = "<group>"; };
+		8B83E17524EFDA68001186AB /* PSBindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSBindable.swift; sourceTree = "<group>"; };
+		8B83E17724EFDA91001186AB /* ItemsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsDataModel.swift; sourceTree = "<group>"; };
+		8B83E17924EFDAD6001186AB /* CameraDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDataModel.swift; sourceTree = "<group>"; };
+		8B83E17B24EFDB1A001186AB /* LocationDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataModel.swift; sourceTree = "<group>"; };
+		8B83E17D24EFDC0F001186AB /* CustomPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPin.swift; sourceTree = "<group>"; };
+		8B83E17F24EFDD1C001186AB /* CustomCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalloutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +98,15 @@
 				8B83E14B24EFD7CA001186AB /* AppDelegate.swift */,
 				8B83E14D24EFD7CA001186AB /* SceneDelegate.swift */,
 				8B83E16D24EFD8BD001186AB /* MapScreen.swift */,
+				8B83E16F24EFD98D001186AB /* MapScreenViewModel.swift */,
+				8B83E17F24EFDD1C001186AB /* CustomCalloutView.swift */,
+				8B83E17124EFD9AA001186AB /* Repository.swift */,
+				8B83E17324EFDA0F001186AB /* ResponseDataModel.swift */,
+				8B83E17724EFDA91001186AB /* ItemsDataModel.swift */,
+				8B83E17924EFDAD6001186AB /* CameraDataModel.swift */,
+				8B83E17B24EFDB1A001186AB /* LocationDataModel.swift */,
+				8B83E17D24EFDC0F001186AB /* CustomPin.swift */,
+				8B83E17524EFDA68001186AB /* PSBindable.swift */,
 				8B83E15424EFD7D5001186AB /* Assets.xcassets */,
 				8B83E15624EFD7D5001186AB /* LaunchScreen.storyboard */,
 				8B83E15924EFD7D5001186AB /* Info.plist */,
@@ -196,7 +223,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B83E18024EFDD1C001186AB /* CustomCalloutView.swift in Sources */,
+				8B83E17C24EFDB1A001186AB /* LocationDataModel.swift in Sources */,
+				8B83E17824EFDA91001186AB /* ItemsDataModel.swift in Sources */,
+				8B83E17624EFDA68001186AB /* PSBindable.swift in Sources */,
 				8B83E16E24EFD8BD001186AB /* MapScreen.swift in Sources */,
+				8B83E17E24EFDC0F001186AB /* CustomPin.swift in Sources */,
+				8B83E17024EFD98D001186AB /* MapScreenViewModel.swift in Sources */,
+				8B83E17A24EFDAD6001186AB /* CameraDataModel.swift in Sources */,
+				8B83E17424EFDA0F001186AB /* ResponseDataModel.swift in Sources */,
+				8B83E17224EFD9AA001186AB /* Repository.swift in Sources */,
 				8B83E14C24EFD7CA001186AB /* AppDelegate.swift in Sources */,
 				8B83E14E24EFD7CA001186AB /* SceneDelegate.swift in Sources */,
 			);
