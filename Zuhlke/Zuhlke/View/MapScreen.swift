@@ -24,6 +24,7 @@ class MapScreen: UIViewController {
         let mapView = MKMapView(frame: .zero)
         mapView.translatesAutoresizingMaskIntoConstraints = false
         mapView.delegate = self
+        mapView.setRegion(MKCoordinateRegion(center: CLLocationCoordinate2DMake(1.290270, 103.851959), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)), animated: true)
         mapView.register(CustomCalloutView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
         return mapView
     }()
