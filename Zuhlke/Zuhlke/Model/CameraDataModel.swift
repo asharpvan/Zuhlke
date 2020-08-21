@@ -38,7 +38,7 @@ class CameraDataModel: NSObject, Codable {
     
     public func fetchCameraImageURL() -> URL? {
         guard let imageURLString = self.imageURLString, let url = URL(string: imageURLString) else {
-            print("imageURLString Not Provided or error creating imageURL")
+            debugPrint("imageURLString Not Provided or error creating imageURL")
             return nil
         }
         return url

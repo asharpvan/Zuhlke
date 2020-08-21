@@ -27,7 +27,7 @@ class ResponseDataModel: NSObject, Codable {
     //MARK: - Class Methods
     class func convert(fromJSONData data: Data?) -> ResponseDataModel? {
         guard let dataObject = try? JSONDecoder().decode(ResponseDataModel.self, from: data!) else {
-            print("Error: Couldn't decode data into WMShiftDetails")
+            debugPrint("Error: Couldn't decode data into WMShiftDetails")
             return nil
         }
         return dataObject

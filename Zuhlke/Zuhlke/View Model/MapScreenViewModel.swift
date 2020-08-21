@@ -36,15 +36,14 @@ class MapScreenViewModel: NSObject, MapScreenViewModelProtocol {
     func fetchSingaporeTrafficCamera() {
         self.repository.callSingaporeTrafficCameraAPI { (result) in
             switch result {
-            case .success(let clockInDetails):
-                var arrayOfCards = Array<CustomPin>()
-                for item in clockInDetails.extractAllCameraInfo() {
-                    let pin = CustomPin(withCameraInfo: item)
-                    arrayOfCards.append(pin)
+            case .success(let response):
+                var arrayOfPins = Array<CustomPin>()
+                for cameraInfo in response.extractAllCameraInfo() {
+                    let pin = CustomPin(withCameraInfo: cameraInfo)
+                    arrayOfPins.append(pin)
                 }
-                self.annotations.value.append(contentsOf: arrayOfCards)
+                self.annotations.value.append(contentsOf: arrayOfPins)
             case.failure(let error):
-                print(error)
                 self.hasError.value = error
             }
         }
@@ -63,7 +62,6 @@ class MapScreenViewModel: NSObject, MapScreenViewModelProtocol {
             case .success(let image):
                 view.updateImage(image: image)
             case.failure(let error):
-                print(error)
                 self.hasError.value = error
             }
         }

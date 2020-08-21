@@ -27,7 +27,7 @@ class LocationDataModel: NSObject, Codable {
     //MARK: - Public Object Methods
     public func fetchCLLocationCoordinates2D() -> CLLocationCoordinate2D? {
         guard let longitude = self.longitude, let latitude = self.latitude else {
-            print("longitude/Latitude Not Provided")
+            debugPrint("longitude/Latitude Not Provided")
             return nil
         }
 
@@ -35,7 +35,7 @@ class LocationDataModel: NSObject, Codable {
         if CLLocationCoordinate2DIsValid(coordinates) {
             return coordinates
         } else {
-            print("Invalid coordinates Not Provided")
+            debugPrint("Invalid coordinates Not Provided")
             return nil
         }
     }

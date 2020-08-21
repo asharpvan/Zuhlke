@@ -67,7 +67,7 @@ class MapScreen: UIViewController {
     }
     
     private func setupBinding() {
-        guard let viewModel = self.viewModel else { print("error fetching viewmodel"); return }
+        guard let viewModel = self.viewModel else { debugPrint("error fetching viewmodel"); return }
         
         viewModel.annotations.bindAndFireEvent { [weak self] (array) in
             guard let self = self else { return }
