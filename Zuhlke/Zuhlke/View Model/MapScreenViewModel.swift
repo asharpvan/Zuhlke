@@ -88,6 +88,8 @@ class MapScreenViewModel: NSObject, MapScreenViewModelProtocol {
             return "Couldnt Parse Data"
         case .imageConversionError:
             return "Something went wrong while downloading the image"
+        case .accessDenied:
+            return "Access Denied"
         }
     }
 }

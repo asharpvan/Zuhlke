@@ -17,6 +17,7 @@ enum NetworkError: Error {
     case badResponseError
     case parsingError
     case imageConversionError
+    case accessDenied
     case networkError(error: String)
 }
 
@@ -99,6 +100,8 @@ class Repository: NSObject, RepositoryProtocol, URLSessionDelegate {
     }
     
     func fetchCameraImage(url: URL, completionHandler: @escaping (Result<UIImage, NetworkError>) -> Void) {
+        
+//        let url = URL(string: "https://images.data.gov.sg/traffic-images/2020/08/d7cb57de-e1ba-47e2-bc60-39f475390c4f.jpg")!
         //Check if Image cached already
         if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) {
             //If pre-cached return cachedImage
@@ -138,6 +141,12 @@ class Repository: NSObject, RepositoryProtocol, URLSessionDelegate {
                     DispatchQueue.main.async {
                         completionHandler(.success(image))
                     }
+                    return
+                } else if (httpStatus.statusCode == 403){
+                    DispatchQueue.main.async {
+                        completionHandler(.failure(.accessDenied))
+                    }
+                    return
                 }
             }
             task.resume()
